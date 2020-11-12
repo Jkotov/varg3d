@@ -61,6 +61,7 @@ add_library(libft STATIC
         libft/ft_atoi_base.c
         libft/ft_putstr.c
         libft/ft_putchar.c
+        libft/ft_putnbr.c
         )
 
 include_directories(${SDL2_INCLUDE_DIR} libft .)

@@ -6,7 +6,7 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 10:33:31 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/12 11:49:09 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 17:43:53 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ void		loop(t_sdl *sdl)
 {
 	SDL_Event	e;
 	char		quit;
+	uint		cur_time;
+	uint		prev_time;
 
+	cur_time = SDL_GetTicks();
 	quit = 0;
 	while (!quit)
 	{
@@ -107,5 +110,9 @@ void		loop(t_sdl *sdl)
 				keyboard_events(sdl, &quit, e);
 		}
 		start_render(sdl);
+		prev_time = cur_time;
+		cur_time = SDL_GetTicks();
+		ft_putnbr(cur_time - prev_time);
+		ft_putchar('\n');
 	}
 }

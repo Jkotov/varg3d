@@ -6,7 +6,7 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 15:16:51 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/12 11:22:12 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 18:31:17 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ float		lighting(t_map map, t_wall *wall, t_vec2 dot)
 	while (cur_light)
 	{
 		light_vector = vec2_sub(dot, cur_light->pos);
-		if (wall_on_light(wall, light_vector, cur_light->pos, map.wall) &&\
-		vec2_scalar_product(wall->normal_vec, light_vector) > 0)
+		if (wall_on_light(wall, light_vector, cur_light->pos, map.wall))
 		{
 			tmp = vec2_scalar_product(wall->normal_vec, light_vector) /\
 			(abs_vec2(wall->normal_vec) * abs_vec2(light_vector)) *\
