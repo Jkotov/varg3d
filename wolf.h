@@ -6,7 +6,7 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 09:44:26 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/12 15:49:40 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 17:41:17 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,6 @@ typedef struct			s_camera
 	float				fov;
 }						t_camera;
 
-typedef struct			s_enemy
-{
-	t_vec2				pos;
-	int					*btm_texture;
-	struct s_enemy		*next;
-}						t_enemy;
-
 typedef struct			s_raycast
 {
 	t_wall				*wall;
@@ -89,7 +82,6 @@ typedef struct			s_map
 {
 	t_camera			*camera;
 	t_light				*light;
-	t_enemy				*enemy;
 	t_wall				*wall;
 }						t_map;
 

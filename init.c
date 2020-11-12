@@ -6,7 +6,7 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 11:45:13 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/12 11:43:05 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 11:43:36 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_sdl	sdl_init(void)
 {
 	t_sdl		sdl;
 
-	sdl.map = (t_map){NULL, NULL, NULL, NULL};
+	sdl.map = (t_map){NULL, NULL, NULL};
 	sdl.map_file = NULL;
 	sdl.width = WIDTH;
 	sdl.height = HEIGHT;
