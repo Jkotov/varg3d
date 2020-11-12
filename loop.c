@@ -6,7 +6,7 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 10:33:31 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/12 11:48:48 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 11:49:09 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		keyboard_events(t_sdl *sdl, char *quit, SDL_Event e)
 		closest_wall = ray_cast(sdl->map, cent_vec, sdl->map.camera->pos);
 		len_to_wall = abs_vec2(vec2_sub(closest_wall.intersetion,\
 		sdl->map.camera->pos));
-		if (len_to_wall > 1)
+		if (len_to_wall > 1 || closest_wall.wall->can_move)
 			sdl->map.camera->pos = vec2_sum(sdl->map.camera->pos, cent_vec);
 	}
 	if (e.key.keysym.sym == SDLK_ESCAPE)

@@ -6,7 +6,7 @@
 #    By: epainter <epainter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 18:11:39 by epainter          #+#    #+#              #
-#    Updated: 2020/11/12 12:04:32 by epainter         ###   ########.fr        #
+#    Updated: 2020/11/12 12:05:39 by epainter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRCS = camera.c\
 	texture.c\
 	vec2d2.c\
 	vec2d.c\
-	wall.c
+	wall.c\
+	wall_render.c
 
 
 ### OBJECTS ###

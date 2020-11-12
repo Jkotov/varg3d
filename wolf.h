@@ -6,7 +6,7 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 09:44:26 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/12 11:53:58 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 14:34:56 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct			s_wall
 	t_vec2				end_dot;
 	t_vec2				dir_vec;
 	t_vec2				normal_vec;
-	int					can_open;
+	int					can_move;
 	t_texture			*tex;
 	int					color;
 	struct s_wall		*next;
@@ -124,6 +124,7 @@ typedef struct			s_sdl
 	t_map				map;
 }						t_sdl;
 
+void					wall_render(t_sdl *sdl, int x, int y, t_raycast res);
 void					start_render(t_sdl *sdl);
 int						color_intens(int color, float intens);
 void					parsing(t_sdl *sdl, char *scene_file);

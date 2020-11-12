@@ -70,6 +70,6 @@ include_directories(${SDL2_INCLUDE_DIRS}
 add_compile_options()
 
 add_executable(wolf3d main.c wolf.h
-        init.c cleanup.c loop.c wall.c vec2d.c camera.c light.c texture.c error_parser.c ini_parser.c parser_utils.c parsing.c cleanup_ini_blocks.c render.c vec2d2.c)
+        init.c cleanup.c loop.c wall.c vec2d.c camera.c light.c texture.c error_parser.c ini_parser.c parser_utils.c parsing.c cleanup_ini_blocks.c render.c vec2d2.c wall_render.c)
 
 target_link_libraries(${PROJECT_NAME} SDL2 SDL2_image libft m)
