@@ -6,7 +6,7 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 09:44:26 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/12 17:41:17 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 23:54:50 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,6 @@
 # define WIDTH 800
 # define HEIGHT 600
 
-typedef struct			s_vec3
-{
-	float				x;
-	float				y;
-	float				z;
-}						t_vec3;
-
 typedef struct			s_vec2
 {
 	float				x;
@@ -38,9 +31,7 @@ typedef struct			s_vec2
 typedef struct			s_texture
 {
 	SDL_Surface			*texture;
-	int					buf_len;
 	int					*buffer;
-	int					format;
 }						t_texture;
 
 typedef struct			s_wall
@@ -112,10 +103,10 @@ typedef struct			s_sdl
 	SDL_Texture			*fg;
 	int					*buffer;
 	int					buffer_len;
-	char				*map_file;
 	t_map				map;
 }						t_sdl;
 
+void					keyboard_events(t_sdl *sdl, char *quit, SDL_Event e);
 void					wall_render(t_sdl *sdl, int x, int y, t_raycast res);
 void					start_render(t_sdl *sdl);
 int						color_intens(int color, float intens);

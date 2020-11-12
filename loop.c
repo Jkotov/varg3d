@@ -6,38 +6,11 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 10:33:31 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/12 17:44:11 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 23:50:38 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
-
-void		keyboard_events(t_sdl *sdl, char *quit, SDL_Event e)
-{
-	t_vec2		cent_vec;
-	t_raycast	closest_wall;
-	float		len_to_wall;
-
-	if (e.key.keysym.sym == SDLK_s || e.key.keysym.sym == SDLK_w)
-	{
-		cent_vec = rotate_vec2((t_vec2){(float)sdl->height / 2.0f,\
-		sdl->map.camera->dist_to_screen}, sdl->map.camera->angle);
-		cent_vec = vec2_mult_num(cent_vec, 1 / abs_vec2(cent_vec));
-		if (e.key.keysym.sym == SDLK_s)
-			cent_vec = vec2_mult_num(cent_vec, -1);
-		closest_wall = ray_cast(sdl->map, cent_vec, sdl->map.camera->pos);
-		len_to_wall = abs_vec2(vec2_sub(closest_wall.intersetion,\
-		sdl->map.camera->pos));
-		if (len_to_wall > 1 || closest_wall.wall->can_move)
-			sdl->map.camera->pos = vec2_sum(sdl->map.camera->pos, cent_vec);
-	}
-	if (e.key.keysym.sym == SDLK_ESCAPE)
-		*quit = 1;
-	if (e.key.keysym.sym == SDLK_d)
-		sdl->map.camera->angle += (float)(M_PI / 20);
-	if (e.key.keysym.sym == SDLK_a)
-		sdl->map.camera->angle -= (float)(M_PI / 20);
-}
 
 t_vec2		vec2_intersection(t_vec2 d1, t_vec2 d2,\
 t_vec2 d3, t_vec2 d4)

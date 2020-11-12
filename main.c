@@ -6,7 +6,7 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 09:44:29 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/12 14:39:03 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 14:47:39 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int				main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr("usage: ./wolf map.ini");
+		ft_putstr("usage: ./wolf map.ini\n");
 		exit(-1);
 	}
 	sdl = sdl_init();

@@ -6,7 +6,7 @@
 #    By: epainter <epainter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 18:11:39 by epainter          #+#    #+#              #
-#    Updated: 2020/11/12 12:05:39 by epainter         ###   ########.fr        #
+#    Updated: 2020/11/12 23:55:50 by epainter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,23 +26,24 @@ H_LIB = libft
 
 ### SOURCE ###
 
-SRCS = camera.c\
-	cleanup.c\
-	cleanup_ini_blocks.c\
-	error_parser.c\
-	ini_parser.c\
-	init.c\
-	light.c\
-	loop.c\
-	main.c\
-	parser_utils.c\
-	parsing.c\
-	render.c\
-	texture.c\
-	vec2d2.c\
-	vec2d.c\
-	wall.c\
-	wall_render.c
+SRCS =	camera.c\
+		cleanup.c\
+		cleanup_ini_blocks.c\
+		error_parser.c\
+		ini_parser.c\
+		init.c\
+		light.c\
+		loop.c\
+		main.c\
+		parser_utils.c\
+		parsing.c\
+		render.c\
+		texture.c\
+		vec2d2.c\
+		vec2d.c\
+		wall.c\
+		wall_render.c \
+		keyboard.c
 
 
 ### OBJECTS ###
@@ -75,7 +76,7 @@ sdl:
 	cd SDL2_image-2.0.5/build; \
 	../configure --prefix=$(CURDIR)/SDL2 ||\
 	(make -C $(CURDIR)/SDL2-2.0.12/build install; \
-	../configure --prefix=$(CURDIR)/SDL2;) ;\
+	../configure --prefix=$(CURDIR)/SDL2;);\
 	make -C $(CURDIR)/SDL2_image-2.0.5/build))
 
 %.o: %.c $(HEADERS)
@@ -84,7 +85,7 @@ sdl:
 	else \
 		make -C $(CURDIR)/SDL2-2.0.12/build install; \
 		make -C $(CURDIR)/SDL2_image-2.0.5/build install; \
-		$(CC) $(FLAGS) -o $@ -c $<; \
+		$(CC) $(FLAGS) -I $(H_DIR) -I $(H_LIB) -o $@ -c $<; \
 		echo $(notdir $@); \
 	fi
 
