@@ -6,7 +6,7 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 22:35:09 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/11 22:42:42 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 11:49:46 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			parse_wall(t_sdl *sdl, t_block *tmp)
 	(float)ft_atoi(find_value("END_Y", tmp))}, nil, nil,\
 	ft_atoi(find_value("CAN_OPEN", tmp)),\
 	wall_texture(find_value("TEXTURE", tmp)),\
-	ft_atoi(find_value("COLOR", tmp)), NULL}, &sdl->map);
+	ft_atoi_base(find_value("COLOR", tmp), 16), NULL}, &sdl->map);
 }
 
 void			parse_light(t_sdl *sdl, t_block *tmp)
