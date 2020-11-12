@@ -6,7 +6,7 @@
 #    By: epainter <epainter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 18:11:39 by epainter          #+#    #+#              #
-#    Updated: 2020/11/03 23:12:29 by epainter         ###   ########.fr        #
+#    Updated: 2020/11/12 12:04:32 by epainter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,21 +16,33 @@ NAME = wolf
 
 CC = gcc
 FLAGS =  `./SDL2/bin/sdl2-config --cflags`
+LIBFT = libft
 
 ### INCLUDES ###
 
 SDL2 = `./SDL2/bin/sdl2-config --libs`
 H_DIR = .
+H_LIB = libft
 
 ### SOURCE ###
 
-SRCS = camera.c \
-       cleanup.c \
-       init.c \
-       main.c \
-       loop.c \
-       vec2d.c \
-       wall.c
+SRCS = camera.c\
+	cleanup.c\
+	cleanup_ini_blocks.c\
+	error_parser.c\
+	ini_parser.c\
+	init.c\
+	light.c\
+	loop.c\
+	main.c\
+	parser_utils.c\
+	parsing.c\
+	render.c\
+	texture.c\
+	vec2d2.c\
+	vec2d.c\
+	wall.c
+
 
 ### OBJECTS ###
 
@@ -40,7 +52,7 @@ OBJS = $(SRCS:.c=.o)
 
 H_FILES = wolf.h
 
-HEADERS = $(addprefix $(H_DIR)/, $(H_FILES))
+HEADERS = $(H_FILES)
 
 
 SDLDIR = SDL2
@@ -48,7 +60,7 @@ SDLDIR = SDL2
 all: lib sdl $(NAME)
 
 lib:
-#	@make -C $(LIBFT)
+	@make -C $(LIBFT)
 
 sdl:
 	@(make -C $(CURDIR)/SDL2-2.0.12/build \
@@ -66,7 +78,7 @@ sdl:
 	make -C $(CURDIR)/SDL2_image-2.0.5/build))
 
 %.o: %.c $(HEADERS)
-	if $(CC) $(FLAGS) -I $(H_DIR) -o $@ -c $<; then\
+	if $(CC) $(FLAGS) -I $(H_DIR) -I $(H_LIB) -o $@ -c $<; then\
 		echo $(notdir $@); \
 	else \
 		make -C $(CURDIR)/SDL2-2.0.12/build install; \
@@ -76,19 +88,19 @@ sdl:
 	fi
 
 $(NAME): $(OBJS)
-	if $(CC) $(FLAGS) -I $(H_DIR) -o $@ $^ $(SDL2) -lSDL2main -lSDL2_image -lm; then \
+	if $(CC) $(FLAGS) -I $(H_DIR) -I $(H_LIB) -L $(LIBFT) -o $@ $^ $(SDL2) -lSDL2main -lSDL2_image -lm -lft; then \
 		echo "Project successfully compiled"; \
 	else \
 		make -C $(CURDIR)/SDL2-2.0.12/build install; \
 		make -C $(CURDIR)/SDL2_image-2.0.5/build install; \
-		$(CC) $(FLAGS) -I $(H_DIR) -o $@ $^ $(SDL2) -lSDL2main -lSDL2_image -lm; \
+		$(CC) $(FLAGS) -I $(H_DIR) -I $(H_LIB) -L $(LIBFT) -o $@ $^ $(SDL2) -lSDL2main -lSDL2_image -lm -lft; \
 		echo "Project successfully compiled"; \
 	fi
 
 clean:
 	@rm -rf SDL2-2.0.12
 	@rm -rf SDL2_image-2.0.5
-#	@$(MAKE) fclean -C $(LIBFT)
+	@$(MAKE) fclean -C $(LIBFT)
 	@/bin/rm -f $(OBJS)
 
 fclean: clean
