@@ -6,7 +6,7 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 15:16:51 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/10 15:38:53 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 11:22:12 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void		add_light(t_map *map, t_vec2 pos, float intensity)
 	}
 }
 
-char		wall_on_light(t_wall *wall, t_vec2 light_vec, t_vec2 start, t_wall *walls)
+char		wall_on_light(t_wall *wall,\
+t_vec2 light_vec, t_vec2 start, t_wall *walls)
 {
 	t_vec2	tmp;
 
@@ -50,7 +51,7 @@ char		wall_on_light(t_wall *wall, t_vec2 light_vec, t_vec2 start, t_wall *walls)
 	return (0);
 }
 
-float		lighting(t_map map, t_wall *wall, t_vec2 dot, t_vec2 eye_vec)
+float		lighting(t_map map, t_wall *wall, t_vec2 dot)
 {
 	float	res;
 	t_light	*cur_light;
@@ -62,10 +63,12 @@ float		lighting(t_map map, t_wall *wall, t_vec2 dot, t_vec2 eye_vec)
 	while (cur_light)
 	{
 		light_vector = vec2_sub(dot, cur_light->pos);
-		if (wall_on_light(wall, light_vector, cur_light->pos, map.wall) && vec2_scalar_product(wall->normal_vec, eye_vec) > 0)
+		if (wall_on_light(wall, light_vector, cur_light->pos, map.wall) &&\
+		vec2_scalar_product(wall->normal_vec, light_vector) > 0)
 		{
 			tmp = vec2_scalar_product(wall->normal_vec, light_vector) /\
-			(abs_vec2(wall->normal_vec) * abs_vec2(light_vector)) * cur_light->intens;
+			(abs_vec2(wall->normal_vec) * abs_vec2(light_vector)) *\
+			cur_light->intens;
 			res = tmp > 0 ? res + tmp : res - tmp;
 		}
 		cur_light = cur_light->next;

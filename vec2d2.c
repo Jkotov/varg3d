@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   vec2d2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/13 15:21:46 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/12 01:20:57 by epainter         ###   ########.fr       */
+/*   Created: 2020/11/12 11:51:55 by epainter          #+#    #+#             */
+/*   Updated: 2020/11/12 11:51:55 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h"
+#include "wolf.h"
 
-int	ft_putendl(char const *s)
+t_vec2	vec2_sub(t_vec2 v1, t_vec2 v2)
 {
-	return (write(1, s, ft_strlen(s)) + write(1, "\n", 1));
+	return (t_vec2){v1.x - v2.x, v1.y - v2.y};
+}
+
+t_vec2	vec2_sum(t_vec2 v1, t_vec2 v2)
+{
+	return (t_vec2){v1.x + v2.x, v1.y + v2.y};
+}
+
+float	vec2_scalar_product(t_vec2 v1, t_vec2 v2)
+{
+	return (v1.x * v2.x + v1.y * v2.y);
+}
+
+float	abs_vec2(t_vec2 v)
+{
+	return (sqrtf(v.x * v.x + v.y * v.y));
 }

@@ -6,18 +6,19 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 11:45:13 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/01 11:46:09 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 11:43:05 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-void sdl_error(char *s)
+void	sdl_error(char *s)
 {
-	//dummy
+	ft_putstr(s);
+	exit(-1);
 }
 
-t_sdl			sdl_init(void)
+t_sdl	sdl_init(void)
 {
 	t_sdl		sdl;
 
@@ -33,8 +34,7 @@ t_sdl			sdl_init(void)
 	SDL_InitSubSystem(SDL_INIT_EVENTS);
 	if (sdl.window == NULL)
 		sdl_error("SDL_CreateWindow Error: ");
-	sdl.renderer = SDL_CreateRenderer(sdl.window, -1,\
-	0);
+	sdl.renderer = SDL_CreateRenderer(sdl.window, -1, 0);
 	if (sdl.renderer == NULL)
 		sdl_error("SDL_CreateRenderer Error: ");
 	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG)
@@ -42,8 +42,7 @@ t_sdl			sdl_init(void)
 		ft_putstr("IMG_Init");
 		SDL_Quit();
 	}
-	sdl.fg = SDL_CreateTexture(sdl.renderer,\
-	SDL_PIXELFORMAT_ARGB8888,\
+	sdl.fg = SDL_CreateTexture(sdl.renderer, SDL_PIXELFORMAT_ARGB8888,\
 	SDL_TEXTUREACCESS_STREAMING, sdl.width, sdl.height);
 	return (sdl);
 }

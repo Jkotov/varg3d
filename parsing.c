@@ -12,7 +12,6 @@
 
 #include "wolf.h"
 
-
 void			parse_wall(t_sdl *sdl, t_block *tmp)
 {
 	t_vec2	nil;

@@ -6,7 +6,7 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 09:44:26 by epainter          #+#    #+#             */
-/*   Updated: 2020/11/11 22:01:33 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/12 11:53:58 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ typedef struct			s_texture
 
 typedef struct			s_wall
 {
-	t_vec2				start_dot; //input need
-	t_vec2				end_dot; //input need
+	t_vec2				start_dot;
+	t_vec2				end_dot;
 	t_vec2				dir_vec;
 	t_vec2				normal_vec;
-	int					can_open; //input need
+	int					can_open;
 	t_texture			*tex;
 	int					color;
 	struct s_wall		*next;
@@ -57,14 +57,14 @@ typedef struct			s_wall
 
 typedef struct			s_light
 {
-	t_vec2				pos;  //input need
-	float				intens; //input need
+	t_vec2				pos;
+	float				intens;
 	struct s_light		*next;
 }						t_light;
 
 typedef struct			s_camera
 {
-	t_vec2				pos; //input need
+	t_vec2				pos;
 	float				angle;
 	float				dist_to_screen;
 	float				fov;
@@ -72,12 +72,12 @@ typedef struct			s_camera
 
 typedef struct			s_enemy
 {
-	t_vec2				pos; //input need
-	int					*btm_texture; // thinks later //input need
+	t_vec2				pos;
+	int					*btm_texture;
 	struct s_enemy		*next;
 }						t_enemy;
 
-typedef struct 			s_raycast
+typedef struct			s_raycast
 {
 	t_wall				*wall;
 	float				light;
@@ -124,16 +124,21 @@ typedef struct			s_sdl
 	t_map				map;
 }						t_sdl;
 
+void					start_render(t_sdl *sdl);
+int						color_intens(int color, float intens);
 void					parsing(t_sdl *sdl, char *scene_file);
 t_raycast				ray_cast(t_map map, t_vec2 eye_vec, t_vec2 start);
 t_texture				*wall_texture(char *file_name);
 SDL_Texture				*create_texture(char *file_name, t_sdl *sdl);
 t_vec2					vec2_norm(t_vec2 v);
 t_vec2					vec2_mult_num(t_vec2 v, float n);
-float					lighting(t_map map, t_wall *wall, t_vec2 dot, t_vec2 eye_vec);
-char					wall_on_light(t_wall *wall, t_vec2 light_vec, t_vec2 start, t_wall *walls);
-void					add_light(t_map *map, t_vec2 pos, float intensity);
-t_wall					*closest(t_wall *walls, t_vec2 eye_vec, t_vec2 start, t_vec2 *intersection);
+float					lighting(t_map map, t_wall *wall, t_vec2 dot);
+char					wall_on_light(t_wall *wall,\
+t_vec2 light_vec, t_vec2 start, t_wall *walls);
+void					add_light(t_map *map,\
+t_vec2 pos, float intensity);
+t_wall					*closest(t_wall *walls,\
+t_vec2 eye_vec, t_vec2 start, t_vec2 *intersection);
 int						is_dot_in_line(t_vec2 dot, t_vec2 start, t_vec2 end);
 t_vec2					rotate_vec2(t_vec2 v, float angle);
 float					abs_vec2(t_vec2 v);

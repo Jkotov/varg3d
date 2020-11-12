@@ -19,5 +19,6 @@ void	init_camera(t_sdl *sdl)
 	sdl->map.camera->pos = (t_vec2){100, 100};
 	sdl->map.camera->angle = 0;
 	sdl->map.camera->fov = M_PI / 6;
-	sdl->map.camera->dist_to_screen = (float)sdl->width / 2.0f / tanf(sdl->map.camera->fov);
+	sdl->map.camera->dist_to_screen = (float)sdl->width /\
+	2.0f / tanf(sdl->map.camera->fov);
 }

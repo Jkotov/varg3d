@@ -5,7 +5,7 @@ set(CMAKE_C_STANDARD 11)
 
 set(SDL2_INCLUDE_DIR ./SDL2/include/SDL2)
 set(SDL2_LIB_DIR ./SDL2/lib)
-
+add_compile_options(-Wall -Wextra -Werror -O2)
 add_library(libft STATIC
         libft/ft_atoi.c
         libft/ft_bzero.c
@@ -70,6 +70,6 @@ include_directories(${SDL2_INCLUDE_DIRS}
 add_compile_options()
 
 add_executable(wolf3d main.c wolf.h
-        init.c cleanup.c loop.c wall.c vec2d.c camera.c light.c texture.c error_parser.c ini_parser.c parser_utils.c parsing.c cleanup_ini_blocks.c)
+        init.c cleanup.c loop.c wall.c vec2d.c camera.c light.c texture.c error_parser.c ini_parser.c parser_utils.c parsing.c cleanup_ini_blocks.c render.c vec2d2.c)
 
 target_link_libraries(${PROJECT_NAME} SDL2 SDL2_image libft m)

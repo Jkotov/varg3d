@@ -6,7 +6,7 @@
 /*   By: epainter <epainter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:27:06 by epainter          #+#    #+#             */
-/*   Updated: 2020/10/19 05:34:48 by epainter         ###   ########.fr       */
+/*   Updated: 2020/11/11 21:50:38 by epainter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 /*
 ** keys 0 - nofree 1 - free(s1); 2 - free(s2); 3 - free(s1 && s2)
 */
-
 
 char	*ft_strjoinfree(char **s1, char **s2, int key)
 {
