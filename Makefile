@@ -6,7 +6,7 @@
 #    By: epainter <epainter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 18:11:39 by epainter          #+#    #+#              #
-#    Updated: 2020/11/12 23:55:50 by epainter         ###   ########.fr        #
+#    Updated: 2020/11/13 16:19:05 by epainter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,12 @@ NAME = wolf
 ### COMPILATION ###
 
 CC = gcc
-FLAGS =  `./SDL2/bin/sdl2-config --cflags`
+FLAGS = -Wall -Werror -Wextra -O2 `./SDL2/bin/sdl2-config --cflags`
 LIBFT = libft
 
 ### INCLUDES ###
 
-SDL2 = `./SDL2/bin/sdl2-config --libs`
+SDL2 = `./SDL2/bin/sdl2-config --static-libs`
 H_DIR = .
 H_LIB = libft
 
@@ -90,12 +90,12 @@ sdl:
 	fi
 
 $(NAME): $(OBJS)
-	if $(CC) $(FLAGS) -I $(H_DIR) -I $(H_LIB) -L $(LIBFT) -o $@ $^ $(SDL2) -lSDL2main -lSDL2_image -lm -lft; then \
+	if $(CC) $(FLAGS) -I $(H_DIR) -I $(H_LIB) -L $(LIBFT) -o $@ $^ -lm -lft $(SDL2) -lSDL2_image; then \
 		echo "Project successfully compiled"; \
 	else \
 		make -C $(CURDIR)/SDL2-2.0.12/build install; \
 		make -C $(CURDIR)/SDL2_image-2.0.5/build install; \
-		$(CC) $(FLAGS) -I $(H_DIR) -I $(H_LIB) -L $(LIBFT) -o $@ $^ $(SDL2) -lSDL2main -lSDL2_image -lm -lft; \
+		$(CC) $(FLAGS) -I $(H_DIR) -I $(H_LIB) -L $(LIBFT) -o $@ $^ -lm -lft $(SDL2) -lSDL2_image; \
 		echo "Project successfully compiled"; \
 	fi
 
